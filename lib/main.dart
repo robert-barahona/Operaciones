@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:operaciones/my_custom_icons_icons.dart';
+
+import './my_custom_icons_icons.dart';
+import './input_number.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,26 +43,8 @@ class _MyAppState extends State<MyApp> {
                   margin: EdgeInsets.only(bottom: 50),
                   child: _title[_selectedIndex],
                 ),
-                TextField(
-                  style: TextStyle(fontSize: 25, color: Colors.white),
-                  textAlign: TextAlign.center,
-                  cursorColor: Colors.white,
-                  autofocus: false,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      borderSide: BorderSide(color: Colors.cyan),
-                    ),
-                    hintText: 'Número A',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    labelStyle: TextStyle(fontSize: 25, color: Colors.white),
-                  ),
-                ),
+                InputNumber(txt: 'Número A'),
+                InputNumber(txt: 'Número B'),
               ],
             ),
           ),
