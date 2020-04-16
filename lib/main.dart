@@ -23,10 +23,14 @@ class _MyAppState extends State<MyApp> {
     Text('PRODUCTO', style: _textStyle),
     Text('DIVISIÓN', style: _textStyle),
   ];
+  final _number1 = TextEditingController();
+  final _number2 = TextEditingController();
 
   void itemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _number1.clear();
+      _number2.clear();
     });
   }
 
@@ -43,8 +47,8 @@ class _MyAppState extends State<MyApp> {
                   margin: EdgeInsets.only(bottom: 50),
                   child: _title[_selectedIndex],
                 ),
-                InputNumber(txt: 'Número A'),
-                InputNumber(txt: 'Número B'),
+                InputNumber(txt: 'Número A', number: _number1),
+                InputNumber(txt: 'Número B', number: _number2),
               ],
             ),
           ),

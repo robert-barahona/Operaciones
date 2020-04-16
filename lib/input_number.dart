@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class InputNumber extends StatelessWidget {
   final txt;
+  var number = TextEditingController();
 
-  InputNumber({@required this.txt});
+  InputNumber({@required this.txt, @required this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ class InputNumber extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 25),
       child: TextField(
+        controller: number,
         style: TextStyle(fontSize: 25, color: Colors.white),
         textAlign: TextAlign.center,
         cursorColor: Colors.white,
