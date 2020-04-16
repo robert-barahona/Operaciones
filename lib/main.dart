@@ -17,6 +17,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
           backgroundColor: Color.fromARGB(255, 44, 62, 80),
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             backgroundColor: Color.fromARGB(255, 23, 32, 42),
             unselectedItemColor: Colors.white,
             selectedItemColor: Colors.cyan,
@@ -31,7 +32,11 @@ class _MyAppState extends State<MyApp> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(MyCustomIcons.multiplication),
-                title: Text('Multiplicación'),
+                title: Text('Producto'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(MyCustomIcons.divide),
+                title: Text('División'),
               )
             ],
           )),
