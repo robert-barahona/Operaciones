@@ -34,6 +34,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void calculateOperation(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,6 +53,17 @@ class _MyAppState extends State<MyApp> {
                 ),
                 InputNumber(txt: 'Número A', number: _number1),
                 InputNumber(txt: 'Número B', number: _number2),
+                Container(
+                  child: RaisedButton(
+                    color: Colors.cyan,
+                    highlightColor: Colors.cyan[100],
+                    onPressed: calculateOperation,
+                    child: Text(
+                      'Calcular',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
