@@ -14,8 +14,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _selectedIndex = 0;
   static const TextStyle _textStyle =
-      TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold);
-  static const List<Widget> _operaciones = <Widget>[
+      TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _title = <Widget>[
     Text('SUMA', style: _textStyle),
     Text('RESTA', style: _textStyle),
     Text('PRODUCTO', style: _textStyle),
@@ -33,8 +33,36 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Color.fromARGB(255, 44, 62, 80),
-          body: Center(
-            child: _operaciones[_selectedIndex],
+          body: Container(
+            padding: EdgeInsets.fromLTRB(80, 100, 80, 10),
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 50),
+                  child: _title[_selectedIndex],
+                ),
+                TextField(
+                  style: TextStyle(fontSize: 25, color: Colors.white),
+                  textAlign: TextAlign.center,
+                  cursorColor: Colors.white,
+                  autofocus: false,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      borderSide: BorderSide(color: Colors.cyan),
+                    ),
+                    hintText: 'Número A',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
           bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
@@ -56,6 +84,7 @@ class _MyAppState extends State<MyApp> {
               ),
             ],
             //Here we have the BottomBar settings
+            currentIndex: _selectedIndex,
             type: BottomNavigationBarType.fixed,
             backgroundColor: Color.fromARGB(255, 23, 32, 42),
             unselectedItemColor: Colors.white,
