@@ -12,15 +12,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var _selectedIndex = 0;
+  static const TextStyle _textStyle =
+      TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold);
+  static const List<Widget> _operaciones = <Widget>[
+    Text('SUMA', style: _textStyle),
+    Text('RESTA', style: _textStyle),
+    Text('PRODUCTO', style: _textStyle),
+    Text('DIVISIÓN', style: _textStyle),
+  ];
+
+  void itemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Color.fromARGB(255, 44, 62, 80),
+          body: Center(
+            child: _operaciones[_selectedIndex],
+          ),
           bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Color.fromARGB(255, 23, 32, 42),
-            unselectedItemColor: Colors.white,
-            selectedItemColor: Colors.cyan,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(MyCustomIcons.plus),
@@ -37,8 +53,14 @@ class _MyAppState extends State<MyApp> {
               BottomNavigationBarItem(
                 icon: Icon(MyCustomIcons.divide),
                 title: Text('División'),
-              )
+              ),
             ],
+            //Here we have the BottomBar settings
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Color.fromARGB(255, 23, 32, 42),
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.cyan,
+            onTap: itemTapped,
           )),
     );
   }
