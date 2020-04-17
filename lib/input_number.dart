@@ -20,11 +20,11 @@ class InputNumber extends StatelessWidget {
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: BorderRadius.all(Radius.circular(40)),
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: BorderRadius.all(Radius.circular(40)),
             borderSide: BorderSide(color: Colors.cyan),
           ),
           hintText: txt,

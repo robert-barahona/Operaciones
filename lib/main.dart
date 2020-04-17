@@ -54,13 +54,21 @@ class _MyAppState extends State<MyApp> {
                 InputNumber(txt: 'Número A', number: _number1),
                 InputNumber(txt: 'Número B', number: _number2),
                 Container(
+                  padding: EdgeInsets.only(top: 10),
                   child: RaisedButton(
-                    color: Colors.cyan,
-                    highlightColor: Colors.cyan[100],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 8,
+                    highlightElevation: 4,
+                    splashColor: Colors.blue,
+                    padding: EdgeInsets.all(15),
+                    color: Colors.blueGrey,
+                    highlightColor: Colors.cyan,
                     onPressed: calculateOperation,
                     child: Text(
-                      'Calcular',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      'CALCULAR',
+                      style: TextStyle(color: Colors.white, fontSize: 25),
                     ),
                   ),
                 )
