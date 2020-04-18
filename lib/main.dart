@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _selectedIndex = index;
       _resultMessage = '';
+      calculateOperation();
     });
   }
 
