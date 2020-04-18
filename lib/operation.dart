@@ -11,7 +11,7 @@ class Operation {
 
   void product() => _result = _numA * _numB;
 
-  void division() => _result = _numA / _numB;
+  void divide() => _result = _numA / _numB;
 
   double getResult() => _result;
 }

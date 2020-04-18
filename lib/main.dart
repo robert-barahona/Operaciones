@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:operaciones/operation.dart';
 
 import './my_custom_icons_icons.dart';
 import './input_number.dart';
@@ -25,17 +26,37 @@ class _MyAppState extends State<MyApp> {
   ];
   final _number1 = TextEditingController();
   final _number2 = TextEditingController();
+  var _resultMessage = '';
 
   void itemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      _number1.clear();
-      _number2.clear();
+      _resultMessage = '';
     });
   }
 
-  void calculateOperation(){
+  void calculateOperation() {
+    var a = double.parse(_number1.text);
+    var b = double.parse(_number2.text);
+    Operation myOperation = new Operation(a, b);
+    switch (_selectedIndex) {
+      case 0:
+        myOperation.add();
+        break;
+      case 1:
+        myOperation.substract();
+        break;
+      case 2:
+        myOperation.product();
+        break;
+      case 3:
+        myOperation.divide();
+        break;
+    }
 
+    setState(() {
+      _resultMessage = 'The Result is: ' + myOperation.getResult().toString();
+    });
   }
 
   @override
@@ -71,7 +92,15 @@ class _MyAppState extends State<MyApp> {
                       style: TextStyle(color: Colors.white, fontSize: 25),
                     ),
                   ),
-                )
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 60),
+                  child: Text(
+                    _resultMessage,
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             ),
           ),
