@@ -59,9 +59,15 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _resultMessage = 'The Result is: ' + myOperation.getResult().toString();
       });
+
+      hideKeyboard();
     }
   }
-  
+
+  void hideKeyboard() {
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
