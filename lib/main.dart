@@ -37,29 +37,31 @@ class _MyAppState extends State<MyApp> {
   }
 
   void calculateOperation() {
-    var a = double.parse(_number1.text);
-    var b = double.parse(_number2.text);
-    Operation myOperation = new Operation(a, b);
-    switch (_selectedIndex) {
-      case 0:
-        myOperation.add();
-        break;
-      case 1:
-        myOperation.substract();
-        break;
-      case 2:
-        myOperation.product();
-        break;
-      case 3:
-        myOperation.divide();
-        break;
+    if (_number1.text != '' && _number2.text != '') {
+      var a = double.parse(_number1.text);
+      var b = double.parse(_number2.text);
+      Operation myOperation = new Operation(a, b);
+      switch (_selectedIndex) {
+        case 0:
+          myOperation.add();
+          break;
+        case 1:
+          myOperation.substract();
+          break;
+        case 2:
+          myOperation.product();
+          break;
+        case 3:
+          myOperation.divide();
+          break;
+      }
+
+      setState(() {
+        _resultMessage = 'The Result is: ' + myOperation.getResult().toString();
+      });
     }
-
-    setState(() {
-      _resultMessage = 'The Result is: ' + myOperation.getResult().toString();
-    });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -81,13 +83,13 @@ class _MyAppState extends State<MyApp> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
+                    onPressed: calculateOperation,
                     elevation: 8,
                     highlightElevation: 4,
                     splashColor: Colors.blue,
                     padding: EdgeInsets.all(15),
                     color: Colors.blueGrey,
                     highlightColor: Colors.cyan,
-                    onPressed: calculateOperation,
                     child: Text(
                       'CALCULAR',
                       style: TextStyle(color: Colors.white, fontSize: 25),
