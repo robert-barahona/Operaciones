@@ -73,47 +73,50 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Color.fromARGB(255, 44, 62, 80),
-          body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(80, 100, 80, 10),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 50),
-                      child: _title[_selectedIndex],
-                    ),
-                    InputNumber(txt: 'Número A', number: _number1),
-                    InputNumber(txt: 'Número B', number: _number2),
-                    Container(
-                      padding: EdgeInsets.only(top: 10),
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+          body: GestureDetector(
+            onTap: hideKeyboard,
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(80, 100, 80, 10),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 50),
+                        child: _title[_selectedIndex],
+                      ),
+                      InputNumber(txt: 'Número A', number: _number1),
+                      InputNumber(txt: 'Número B', number: _number2),
+                      Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          onPressed: calculateOperation,
+                          elevation: 8,
+                          highlightElevation: 4,
+                          splashColor: Colors.blue,
+                          padding: EdgeInsets.all(15),
+                          color: Colors.blueGrey,
+                          highlightColor: Colors.cyan,
+                          child: Text(
+                            'CALCULAR',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
                         ),
-                        onPressed: calculateOperation,
-                        elevation: 8,
-                        highlightElevation: 4,
-                        splashColor: Colors.blue,
-                        padding: EdgeInsets.all(15),
-                        color: Colors.blueGrey,
-                        highlightColor: Colors.cyan,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 60),
                         child: Text(
-                          'CALCULAR',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
+                          _resultMessage,
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 60),
-                      child: Text(
-                        _resultMessage,
-                        style: TextStyle(fontSize: 25, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
